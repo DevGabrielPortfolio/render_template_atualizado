@@ -110,6 +110,16 @@ def delete_mensagem(codigo):
     Mensagem.delete_message(codigo)
     return redirect('/comentarios')
 
+@app.route('/like/mesagem/<codigo>')
+def like_mensagem(codigo):
+    Mensagem.add_like(codigo)
+    return redirect('/comentarios')
+
+@app.route('/deslike/mensagem/<codigo>')
+def deslike_mensagem(codigo):
+    Mensagem.add_dislike(codigo)
+    return redirect('/comentarios')
+
 # Executa o app
 if __name__ == '__main__':
     app.run(debug=True)
