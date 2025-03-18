@@ -1,10 +1,10 @@
 import datetime
-from data.conexao import Conexao
+from data.conexao import Conexao, ConexaoLocal
 
 class Usuario:
     def cadastrar_usuario(user, password):
 
-        conn = Conexao.criar_conexao()
+        conn = ConexaoLocal.criar_conexao()
 
         cursor = conn.cursor()
 
@@ -22,7 +22,7 @@ class Usuario:
 
     def validar_login(user, password):
 
-        conn = Conexao.criar_conexao()
+        conn = ConexaoLocal.criar_conexao()
 
         cursor = conn.cursor()
 

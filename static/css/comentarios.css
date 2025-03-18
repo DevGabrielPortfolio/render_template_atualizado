@@ -106,6 +106,10 @@ h2 {
     text-align: center;
 }
 
+.user{
+    text-align: center;
+}
+
 /* Estilos para garantir boa leitura em dispositivos móveis */
 @media (max-width: 600px) {
     .container-form {
@@ -127,9 +131,11 @@ h2 {
 }
 
 
+/* Estilo do cabeçalho */
 header {
+    background-color: #2C3E50;
     padding: 10px 0;
-    margin-bottom: 10%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -137,25 +143,53 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
-    background-color: #2c3e50;
 }
 
 nav ul li a {
     text-decoration: none;
+    color: #ECF0F1;
+    font-weight: 500;
     font-size: 1.1rem;
-    padding: 2px;
+    padding: 10px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #1ABC9C;
-    /* Cor de destaque quando passar o mouse */
-    text-decoration: none;
+    color: #1ABC9C; /* Cor de destaque quando passar o mouse */
+    transform: scale(1.05);
 }
 
-/* Remover o outline e box-shadow ao focar ou passar o mouse */
-nav ul li a:focus,
-nav ul li a:hover {
-    outline: none; /* Remove a borda de foco */
-    box-shadow: none; /* Remove a sombra */
+.botao_excluir{
+    background-color: rgb(236, 75, 75);
+    color: white;
+    width: 50px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    transition: 0.1s;
+}
+
+.botao_excluir:hover{
+    transform: scale(1.05);
+    background-color: rgb(189, 54, 54);
+}
+
+.like{
+    width: 30px; 
+    height: 30px;
+    transition: 0.2s;
+}
+
+.like:hover{
+    transform: scale(1.05);
+}
+
+.deslike{
+    width: 30px; 
+    height: 30px;
+    transition: 0.2s;
+}
+
+.deslike:hover{
+    transform: scale(1.05);
 }

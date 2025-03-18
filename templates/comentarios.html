@@ -23,13 +23,13 @@
             <h1>Comentários</h1>
             <div class="container-form">
                 <form action="/post/cadastrarmensagem" method="POST" class="formatacao-form">
-                    <div class="input-group">
+                    <div class="input-group user">
                         <label for="usuario">Usuário</label>
                         <input type="text" id="usuario" name="usuario" placeholder="Digite o usuário" required>
                     </div>
                     <div class="input-group">
                         <label for="comentario">Comentário</label>
-                        <textarea id="comentario" name="comentario" placeholder="Digite o seu comentário" required></textarea>
+                        <textarea id="comentario" name="comentario" placeholder="Digite o seu comentário" required style="width: 560px; height: 143px; resize: none;"></textarea>
                     </div>
                     <button type="submit">Enviar</button>
                 </form>
@@ -39,9 +39,19 @@
                 <h2>Comentários Recentes</h2>
                 {% for mensagem in mensagens %}
                 <div class="mensagem">
-                    <strong>{{mensagem.usuario}} <span class="data">{{mensagem.data_comentario}}</span></strong>
+                    <strong>{{mensagem.usuario}} - <span class="data" style="color: rgb(132, 0, 255);">{{mensagem.data_hora}}</span></strong>
+                    <br>
+                    <strong style="color: black;">LIKES: <span>{{mensagem.curtidas}}</span></strong>
+                    <br>
+                    <strong style="color: black;">DESLIKES: <span>{{mensagem.curtidas}}</span></strong>
                     <p>{{mensagem.comentario}}</p>
+                    <a href="/deleteComentario/mensagem/{{mensagem.cod_comentario}}"><button type="button" class="botao_excluir">Excluir</button></a>
+                    <div class="like-deslike" style="margin-top: 10px;">
+                        <a href="/like/mesagem/{{mensagem.cod_comentario}}"><img src="../static/img/like.png" alt="Like" class="like"></a>
+                        <a href="/deslike/mensagem/{{mensagem.cod_comentario}}"><img src="../static/img/dislike.png" alt="deslike" class="deslike"></a>
+                    </div>
                 </div>
+                
                 {% endfor %}
             </div>
         </div>

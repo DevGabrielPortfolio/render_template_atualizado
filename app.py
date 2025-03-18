@@ -105,6 +105,11 @@ def excluirCor(cor):
         coresCadastro.remove(cor)
     return redirect(url_for('cadastroCor'))
 
+@app.route('/deleteComentario/mensagem/<codigo>')
+def delete_mensagem(codigo):
+    Mensagem.delete_message(codigo)
+    return redirect('/comentarios')
+
 # Executa o app
 if __name__ == '__main__':
     app.run(debug=True)

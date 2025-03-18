@@ -1,11 +1,12 @@
 import datetime
 from data.conexao import Conexao 
+from mysql.connector import Error
 
 class Mensagem:
     
     def  cadastrar_mensagem(usuario, comentario):
 
-        data_hora = datetime.datetime.today()
+        data_hora_comentario = datetime.datetime.today()
    
    
         # Criando a conexão com o banco de dados
@@ -15,12 +16,12 @@ class Mensagem:
         cursor = conexao.cursor()
 
         # Criando o sql que será executado
-        sql = """INSERT INTO tbComentario
-                    (nome, data_comentario, comentario)
+        sql = """INSERT INTO tb_comentarios
+                    (nome, data_hora, comentario)
                 VALUES
                     (%s, %s, %s)"""
                 
-        valores = (usuario, data_hora, comentario)
+        valores = (usuario, data_hora_comentario, comentario)
     
         # Executando o comnado sql
         cursor.execute(sql,valores)
@@ -41,7 +42,7 @@ class Mensagem:
         cursor = conexao.cursor(dictionary = True)
 
         # Criando o sql que será executado
-        sql = "SELECT nome AS usuario, comentario, data_comentario FROM tbComentario;"
+        sql = "SELECT cod_comentario, curtidas, nome AS usuario, comentario, data_hora FROM tb_comentarios;"
 
         #Executando o comando sql
         cursor.execute(sql)        
@@ -54,3 +55,24 @@ class Mensagem:
 
         return resultado
     
+    def delete_message(id):
+        # Criando a conexão com o banco de dados
+        conexao = Conexao.criar_conexao()
+
+        # O cursor será responsável por manipular
+        cursor = conexao.cursor()
+
+        # Criando o sql que será executado
+        sql = """DELETE FROM tb_comentarios WHERE cod_comentario = %s;"""
+                
+        valores = (id,)
+    
+        # Executando o comnado sql
+        cursor.execute(sql,valores)
+    
+        # Confirmo a alteração (commit serve para fixar a alteração)
+        conexao.commit()
+    
+        # Fecho a conexao com o banco
+        cursor.close()
+        conexao.close()
