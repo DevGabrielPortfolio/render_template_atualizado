@@ -1,58 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/comentarios.css') }}">
     <title>Página Inicial</title>
+
 </head>
 <body>
 
     <header>
+
         <nav>
+
             <ul>
+
                 <li><a href="/curiosidades">Início</a></li>
                 <li><a href="/sobre">Sobre</a></li>
                 <li><a href="/cadastroCor">Cadastro cor</a></li>
+
             </ul>
+
         </nav>
+
     </header>
 
     <main>
+
         <div class="container">
+
             <h1>Comentários</h1>
+
             <div class="container-form">
+
                 <form action="/post/cadastrarmensagem" method="POST" class="formatacao-form">
+
                     <div class="input-group user">
+
                         <label for="usuario">Usuário</label>
                         <input type="text" id="usuario" name="usuario" placeholder="Digite o usuário" required>
-                    </div>
+
+                    </div><!--input-group user-->
+
                     <div class="input-group">
+
                         <label for="comentario">Comentário</label>
                         <textarea id="comentario" name="comentario" placeholder="Digite o seu comentário" required style="width: 560px; height: 143px; resize: none;"></textarea>
-                    </div>
+
+                    </div><!--input-group-->
+
                     <button type="submit">Enviar</button>
-                </form>
-            </div>
+
+                </form><!--formatacao-form-->
+
+            </div><!--container-form-->
 
             <div class="result">
+
                 <h2>Comentários Recentes</h2>
+
                 {% for mensagem in mensagens %}
+
                 <div class="mensagem">
-                    <strong>{{mensagem.usuario}} - <span class="data" style="color: rgb(132, 0, 255);">{{mensagem.data_hora}}</span></strong>
+
+                    <strong>{{mensagem.usuario}} - <span class="data" style="color: rgb(132, 0, 255);">{{mensagem.data_comentario}}</span></strong>
+
                     <br>
+
                     <strong style="color: black;">LIKES: <span>{{mensagem.curtidas}}</span></strong>
+
                     <br>
+
                     <a href="/deleteComentario/mensagem/{{mensagem.cod_comentario}}"><button type="button" class="botao_excluir">Excluir</button></a>
+
                     <div class="like-deslike" style="margin-top: 10px;">
+
                         <a href="/like/mesagem/{{mensagem.cod_comentario}}"><img src="../static/img/like.png" alt="Like" class="like"></a>
                         <a href="/deslike/mensagem/{{mensagem.cod_comentario}}"><img src="../static/img/dislike.png" alt="deslike" class="deslike"></a>
+
                     </div>
-                </div>
+
+                </div><!--mensagem-->
                 
                 {% endfor %}
-            </div>
-        </div>
+
+            </div><!--result-->
+
+        </div><!--container-->
+
     </main>
+
 </body>
 </html>

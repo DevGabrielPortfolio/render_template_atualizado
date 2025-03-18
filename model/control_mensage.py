@@ -1,5 +1,5 @@
 import datetime
-from data.conexao import Conexao 
+from data.conexao import Conexao, ConexaoLocal
 from mysql.connector import Error
 
 class Mensagem:
@@ -10,14 +10,14 @@ class Mensagem:
    
    
         # Criando a conexão com o banco de dados
-        conexao = Conexao.criar_conexao()
+        conexao = ConexaoLocal.criar_conexao()
 
         # O cursor será responsável por manipular
         cursor = conexao.cursor()
 
         # Criando o sql que será executado
-        sql = """INSERT INTO tb_comentarios
-                    (nome, data_hora, comentario)
+        sql = """INSERT INTO tbcomentario
+                    (nome, data_comentario, comentario)
                 VALUES
                     (%s, %s, %s)"""
                 
@@ -36,13 +36,13 @@ class Mensagem:
     def recuperar_mensagems():
 
         #Criar conexão 
-        conexao = Conexao.criar_conexao()
+        conexao = ConexaoLocal.criar_conexao()
 
         # O cursor será responsável por manipular
         cursor = conexao.cursor(dictionary = True)
 
         # Criando o sql que será executado
-        sql = "SELECT cod_comentario, curtidas, nome AS usuario, comentario, data_hora FROM tb_comentarios;"
+        sql = "SELECT cod_comentario, curtidas, nome AS usuario, comentario, data_comentario FROM tbcomentario;"
 
         #Executando o comando sql
         cursor.execute(sql)        
@@ -57,13 +57,13 @@ class Mensagem:
     
     def delete_message(id):
         # Criando a conexão com o banco de dados
-        conexao = Conexao.criar_conexao()
+        conexao = ConexaoLocal.criar_conexao()
 
         # O cursor será responsável por manipular
         cursor = conexao.cursor()
 
         # Criando o sql que será executado
-        sql = """DELETE FROM tb_comentarios WHERE cod_comentario = %s;"""
+        sql = """DELETE FROM tbcomentario WHERE cod_comentario = %s;"""
                 
         valores = (id,)
     
@@ -79,13 +79,13 @@ class Mensagem:
     
     def add_like(id):
         # Criando a conexão com o banco de dados
-        conexao = Conexao.criar_conexao()
+        conexao = ConexaoLocal.criar_conexao()
 
         # O cursor será responsável por manipular
         cursor = conexao.cursor()
 
         # Criando o SQL que será executado
-        sql = """UPDATE tb_comentarios
+        sql = """UPDATE tbcomentario
                 SET curtidas = curtidas + 1
                 WHERE cod_comentario = %s;"""
 
@@ -103,13 +103,13 @@ class Mensagem:
 
     def add_dislike(id):
         # Criando a conexão com o banco de dados
-        conexao = Conexao.criar_conexao()
+        conexao = ConexaoLocal.criar_conexao()
 
         # O cursor será responsável por manipular
         cursor = conexao.cursor()
 
         # Criando o SQL que será executado
-        sql = """UPDATE tb_comentarios
+        sql = """UPDATE tbcomentario
                 SET curtidas = curtidas - 1
                 WHERE cod_comentario = %s;"""
 
