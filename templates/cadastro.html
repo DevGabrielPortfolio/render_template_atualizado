@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Cadastro de frases</title>
+
+    <link rel="stylesheet" href="../static/css/cadastro.css">
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/curiosidades">Início</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="/cadastroCor">Cadastro cor</a></li>
+                <li><a href="/comentarios">Comentarios</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="row">
+
+        <form class="col s12" method="POST" action="/receber">
+
+            <div class="row">
+
+                <div class="input-field col s6">
+
+                    <i class="material-icons prefix">mode_edit</i>
+                    <input type="text" id="icon_prefix2" name="nome" class="materialize-textarea">
+                    <label for="icon_prefix2">Frase</label>
+
+                </div>
+
+                <button class="btn waves-effect waves-light" type="submit" name="action" style="margin-top: 20px;">
+                    Submit
+                    <i class="material-icons right">send</i>
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for item in itens %}
+            <div class="col s12 m5">
+                <div class="card-panel teal" style="max-width: 300px; height: auto; padding: 10px;">
+                    <span class="white-text" style="word-wrap: break-word; display: inline-block; width: 100%;">{{ item
+                        }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</body>
+
+</html>
