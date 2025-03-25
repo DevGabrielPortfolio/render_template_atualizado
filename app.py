@@ -20,16 +20,17 @@ def paginaCadastro():
 def cadastroUser():
     usuario = request.form['nomeCadastro']
     senha = request.form['senhaCadastro']
+    login = request.form['loginUser']
 
-    Usuario.cadastrar_usuario(usuario, senha)
+    Usuario.cadastrar_usuario(login, usuario, senha)
     return redirect('/home')
 
 @app.route('/login', methods=['POST'])
 def login():
-    usuario = request.form['nomeLogin']
+    user = request.form['nomeLogin']
     senha = request.form['senhaLogin']
 
-    Usuario.validar_login(usuario, senha)
+    Usuario.validar_login(user, senha)
     return redirect('/home')
 
 @app.route('/home')

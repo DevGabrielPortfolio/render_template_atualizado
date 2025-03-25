@@ -2,15 +2,15 @@ import datetime
 from data.conexao import Conexao, ConexaoLocal
 
 class Usuario:
-    def cadastrar_usuario(user, password):
+    def cadastrar_usuario(login, user, password):
 
-        conn = ConexaoLocal.criar_conexao()
+        conn = Conexao.criar_conexao()
 
         cursor = conn.cursor()
 
-        sql = "INSERT INTO usuarios (nome, senha) VALUES (%s,%s)"
+        sql = "INSERT INTO tb_usuarios (login, nome, senha) VALUES (%s,%s, %s)"
 
-        valores = (user, password)
+        valores = (login, user, password)
 
         cursor.execute(sql, valores)
 
@@ -20,15 +20,15 @@ class Usuario:
         conn.close()
 
 
-    def validar_login(user, password):
+    def validar_login(login, password):
 
-        conn = ConexaoLocal.criar_conexao()
+        conn = Conexao.criar_conexao()
 
         cursor = conn.cursor()
 
-        sql = "SELECT COUNT(*) FROM usuarios WHERE nome = %s AND senha = %s"
+        sql = "SELECT COUNT(*) FROM tb_usuarios WHERE login = %s AND senha = %s"
 
-        valores = (user, password)
+        valores = (login, password)
 
         cursor.execute(sql, valores)
 

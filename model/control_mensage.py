@@ -10,14 +10,14 @@ class Mensagem:
    
    
         # Criando a conexão com o banco de dados
-        conexao = ConexaoLocal.criar_conexao()
+        conexao = Conexao.criar_conexao()
 
         # O cursor será responsável por manipular
         cursor = conexao.cursor()
 
         # Criando o sql que será executado
-        sql = """INSERT INTO tbcomentario
-                    (nome, data_comentario, comentario)
+        sql = """INSERT INTO tb_comentarios
+                    (nome, data_hora, comentario)
                 VALUES
                     (%s, %s, %s)"""
                 
@@ -36,13 +36,13 @@ class Mensagem:
     def recuperar_mensagems():
 
         #Criar conexão 
-        conexao = ConexaoLocal.criar_conexao()
+        conexao = Conexao.criar_conexao()
 
         # O cursor será responsável por manipular
         cursor = conexao.cursor(dictionary = True)
 
         # Criando o sql que será executado
-        sql = "SELECT cod_comentario, curtidas, nome AS usuario, comentario, data_comentario FROM tbcomentario;"
+        sql = "SELECT cod_comentario, curtidas, nome AS usuario, comentario, data_hora FROM tb_comentarios;"
 
         #Executando o comando sql
         cursor.execute(sql)        
@@ -57,13 +57,13 @@ class Mensagem:
     
     def delete_message(id):
         # Criando a conexão com o banco de dados
-        conexao = ConexaoLocal.criar_conexao()
+        conexao = Conexao.criar_conexao()
 
         # O cursor será responsável por manipular
         cursor = conexao.cursor()
 
         # Criando o sql que será executado
-        sql = """DELETE FROM tbcomentario WHERE cod_comentario = %s;"""
+        sql = """DELETE FROM tb_comentarios WHERE cod_comentario = %s;"""
                 
         valores = (id,)
     
@@ -79,48 +79,41 @@ class Mensagem:
     
     def add_like(id):
         # Criando a conexão com o banco de dados
-        conexao = ConexaoLocal.criar_conexao()
-
-        # O cursor será responsável por manipular
+        conexao = Conexao.criar_conexao()
         cursor = conexao.cursor()
 
         # Criando o SQL que será executado
-        sql = """UPDATE tbcomentario
-                SET curtidas = curtidas + 1
+        sql = """UPDATE tb_comentarios
+                SET curtidas = GREATEST(0, curtidas + 1)
                 WHERE cod_comentario = %s;"""
 
         valores = (id,)
-        
+
         # Executando o comando SQL
         cursor.execute(sql, valores)
-        
-        # Confirmo a alteração (commit serve para fixar a alteração)
         conexao.commit()
-        
-        # Fecho a conexão com o banco
+
+        # Fechando a conexão
         cursor.close()
         conexao.close()
 
+
     def add_dislike(id):
         # Criando a conexão com o banco de dados
-        conexao = ConexaoLocal.criar_conexao()
-
-        # O cursor será responsável por manipular
+        conexao = Conexao.criar_conexao()
         cursor = conexao.cursor()
 
         # Criando o SQL que será executado
-        sql = """UPDATE tbcomentario
-                SET curtidas = curtidas - 1
+        sql = """UPDATE tb_comentarios
+                SET curtidas = GREATEST(curtidas - 1, 0)
                 WHERE cod_comentario = %s;"""
 
         valores = (id,)
-        
+
         # Executando o comando SQL
         cursor.execute(sql, valores)
-        
-        # Confirmo a alteração (commit serve para fixar a alteração)
         conexao.commit()
-        
-        # Fecho a conexão com o banco
+
+        # Fechando a conexão
         cursor.close()
         conexao.close()
