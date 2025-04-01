@@ -4,6 +4,7 @@ import os
 from model.control_user import Usuario
 from data import listas_configuracao
 from model.control_mensage import Mensagem
+from hashlib import sha256
 
 app = Flask(__name__)
 
@@ -20,17 +21,19 @@ def paginaCadastro():
 def cadastroUser():
     usuario = request.form['nomeCadastro']
     senha = request.form['senhaCadastro']
+    senhaCrptografada = sha256(senha.encode()).hexdigest()
     login = request.form['loginUser']
 
-    Usuario.cadastrar_usuario(login, usuario, senha)
+    Usuario.cadastrar_usuario(login, usuario, senhaCrptografada)
     return redirect('/home')
 
 @app.route('/login', methods=['POST'])
 def login():
     user = request.form['nomeLogin']
     senha = request.form['senhaLogin']
+    senhaCriptografadaLogin = sha256(senha.encode()).hexdigest()
 
-    Usuario.validar_login(user, senha)
+    Usuario.validar_login(user, senhaCriptografadaLogin)
     return redirect('/home')
 
 @app.route('/home')
