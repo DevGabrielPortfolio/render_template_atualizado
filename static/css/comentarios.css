@@ -13,17 +13,25 @@ body {
     line-height: 1.6;
 }
 
+.container{
+    position: absolute;
+    left: 130px;
+    width: 800px;
+}
+
 /* Container do formulário */
 .container-form {
     width: 100%;
     max-width: 650px;
-    margin: 0 auto;
     padding: 25px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    position: fixed;
+    top: 100px;
+    left: 60%;
     transition: all 0.3s ease;
+    z-index: 1000;
 }
 
 .container-form:hover {
@@ -75,7 +83,7 @@ body {
 /* Exibição dos comentários */
 .result {
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     margin: 40px auto 0;
 }
 
@@ -127,9 +135,21 @@ h2 {
 }
 
 /* Estilos para garantir boa leitura em dispositivos móveis */
-@media (max-width: 600px) {
+
+
+@media (max-width: 1400px) {
     .container-form {
         padding: 20px;
+        position: absolute;
+        top: 6px;
+        left: -124px;
+        display: block;
+        position: relative;
+        max-width: 600px;
+    }
+
+    .container > h1{
+        margin-left: -500px;
     }
 
     .formatacao-form input[type="text"], 
@@ -139,11 +159,75 @@ h2 {
 
     .mensagem {
         padding: 15px;
+        left: 0;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .result{
+        margin-left: -100px;
+        margin-top: 100px;
+    }
+
+    .result > h2{
+        margin-left: -200px;
     }
 
     h1, h2 {
         font-size: 1.8rem;
     }
+
+
+}
+
+@media (max-width: 600px) {
+    .container-form {
+        padding: 20px;
+        position: absolute;
+        top: 6px;
+        left: -130px;
+        display: block;
+        position: relative;
+        max-width: 400px;
+    }
+
+    .container > h1{
+        margin-left: -622px;
+    }
+
+    .formatacao-form input[type="text"], 
+    .formatacao-form button {
+        font-size: 1rem;
+    }
+
+    #comentario{
+        width: 355px;
+    }
+
+    .mensagem {
+        padding: 15px;
+        left: 0;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: -30px;
+    }
+    .result{
+        margin-left: -100px;
+        margin-top: 100px;
+    }
+
+    .result > h2{
+        margin-left: -200px;
+    }
+
+    h1, h2 {
+        font-size: 1.8rem;
+    }
+
+
 }
 
 
@@ -205,3 +289,5 @@ nav ul li a:hover {
 .like {
     margin-right: 10px;
 }
+
+
