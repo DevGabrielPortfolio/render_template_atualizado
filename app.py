@@ -43,7 +43,7 @@ def home():
         cor = rd.choice(listas_configuracao.cores_fundo)
         imagem = rd.choice(listas_configuracao.lista_imagens)
 
-        return render_template('home.html', texto_curiosidade=curiosidade, imagem=imagem, cor_fundo=cor)
+        return render_template('home.html', texto_curiosidade=curiosidade, imagem=imagem, cor_fundo=cor, nome_usuario=session['nome_usuario'])
     else:
         return redirect('/')
 

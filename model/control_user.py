@@ -25,7 +25,7 @@ class Usuario:
 
         conn = Conexao.criar_conexao()
 
-        cursor = conn.cursor()
+        cursor = conn.cursor(dictionary=True)
 
         sql = "SELECT nome, login, senha FROM tb_usuarios WHERE login = %s AND senha = %s"
 
