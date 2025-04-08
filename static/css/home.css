@@ -17,6 +17,16 @@ body {
     justify-content: space-between;
 }
 
+.deslogar{
+    margin-bottom: -30px;
+    margin-left: 10px;
+}
+
+.deslogar > a{
+    color: #fff;
+    text-decoration: none;
+}
+
 .boas-vindas{
     color: #fff;
     text-align: end;

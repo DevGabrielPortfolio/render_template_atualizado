@@ -36,6 +36,11 @@ def login():
     Usuario.validar_login(user, senhaCriptografadaLogin)
     return redirect('/home')
 
+@app.route('/deslogar')
+def deslogar():
+    Usuario.logoff()
+    return redirect('/')
+
 @app.route('/home')
 def home():
     if "usuario" in session:
