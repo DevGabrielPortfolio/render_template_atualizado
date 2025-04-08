@@ -7,7 +7,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Gradiente suave */
+    background-color: #1A1A1A; /* Preto profundo */
+    color: #FFFFFF; /* Branco neve */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,31 +17,31 @@ body {
 }
 
 .form-container {
-    background-color: #fff;
+    background-color: #282828; /* Preto levemente mais claro */
     padding: 30px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Sombra suave */
     border-radius: 12px;
     width: 350px;
     text-align: center;
     transform: scale(1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-container:hover {
-    transform: scale(1.05); /* Aumenta ligeiramente quando passa o mouse */
-    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.3); /* Sombras mais intensas */
+    transform: scale(1.05);
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.6); /* Sombra mais intensa */
 }
 
 h1 {
     font-size: 2em;
-    color: #333;
+    color: #FFD700; /* Dourado */
     margin-bottom: 20px;
     font-weight: 700;
 }
 
 h2 {
     font-size: 1.5em;
-    color: #444;
+    color: #C0C0C0; /* Prata */
     margin-bottom: 15px;
     font-weight: 600;
 }
@@ -51,7 +52,7 @@ h2 {
 
 label {
     font-size: 1.1em;
-    color: #555;
+    color: #C0C0C0; /* Prata */
     display: block;
     margin-bottom: 8px;
     text-align: left;
@@ -62,22 +63,24 @@ input {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #333; /* Borda escura */
     border-radius: 8px;
     font-size: 1em;
+    background-color: #333; /* Fundo escuro */
+    color: #FFFFFF;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6); /* Destaque para campos focados */
+    border-color: #FFD700; /* Dourado */
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.6); /* Sombra dourada */
 }
 
 button {
     width: 100%;
     padding: 12px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #800020; /* Burgundy */
+    color: #FFFFFF;
     font-size: 1.1em;
     border: none;
     border-radius: 8px;
@@ -86,11 +89,11 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
-    transform: translateY(-2px); /* Botão sobe um pouco quando passa o mouse */
+    background-color: #50C878; /* Verde esmeralda */
+    transform: translateY(-2px);
 }
 
 button:active {
-    background-color: #388e3c;
-    transform: translateY(0); /* Animação para o clique */
+    background-color: #6B8E23; /* Verde oliva escuro */
+    transform: translateY(0);
 }

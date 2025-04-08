@@ -8,8 +8,8 @@
 /* Corpo e fundo da página */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #4A00E0, #8E2DE2); /* Gradiente roxo profundo */
-    color: #E0E0E0; /* Cinza claro */
+    background-color: #1A1A1A; /* Preto profundo */
+    color: #FFFFFF; /* Branco neve */
     line-height: 1.6;
     display: flex;
     justify-content: center;
@@ -32,8 +32,8 @@ body {
     bottom: 30px;
     width: 350px;
     padding: 30px;
-    background-color: #191970; /* Azul meia-noite */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    background-color: #282828; /* Preto levemente mais claro */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Sombra suave */
     border-radius: 12px;
     z-index: 1000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -41,7 +41,7 @@ body {
 
 .container-form:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.6); /* Sombra mais intensa */
 }
 
 .formatacao-form {
@@ -51,7 +51,7 @@ body {
 
 .formatacao-form label {
     font-size: 1.1em;
-    color: #D1C4E9; /* Roxo claro */
+    color: #C0C0C0; /* Prata */
     margin-bottom: 8px;
     text-align: left;
     font-weight: 500;
@@ -62,25 +62,25 @@ body {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #483D8B; /* Azul ardósia escuro */
+    border: 1px solid #333; /* Borda escura */
     border-radius: 8px;
     font-size: 1em;
-    background-color: #28284B; /* Azul escuro */
-    color: #E0E0E0;
+    background-color: #333; /* Fundo escuro */
+    color: #FFFFFF;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .formatacao-form input[type="text"]:focus,
 .formatacao-form textarea:focus {
     border-color: #FFD700; /* Dourado */
-    box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.6); /* Sombra dourada */
 }
 
 .formatacao-form button {
     width: 100%;
     padding: 12px;
-    background-color: #FFD700; /* Dourado */
-    color: #191970; /* Azul meia-noite */
+    background-color: #800020; /* Burgundy */
+    color: #FFFFFF;
     font-size: 1.1em;
     border: none;
     border-radius: 8px;
@@ -89,12 +89,12 @@ body {
 }
 
 .formatacao-form button:hover {
-    background-color: #DAA520; /* Dourado escuro */
+    background-color: #50C878; /* Verde esmeralda */
     transform: translateY(-2px);
 }
 
 .formatacao-form button:active {
-    background-color: #B8860B; /* Dourado mais escuro */
+    background-color: #6B8E23; /* Verde oliva escuro */
     transform: translateY(0);
 }
 
@@ -105,17 +105,17 @@ body {
 }
 
 .mensagem {
-    background-color: #28284B; /* Azul escuro */
+    background-color: #282828; /* Preto levemente mais claro */
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Sombra suave */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mensagem:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.6); /* Sombra mais intensa */
 }
 
 .mensagem strong {
@@ -125,19 +125,19 @@ body {
 
 .mensagem .data_comentario {
     font-size: 0.85em;
-    color: #B0C4DE; /* Azul claro */
+    color: #C0C0C0; /* Prata */
     margin-left: 10px;
 }
 
 .mensagem p {
     font-size: 1em;
-    color: #E0E0E0;
+    color: #FFFFFF;
     margin-top: 10px;
     line-height: 1.6;
     overflow-wrap: break-word;
 }
 
-mensagem span {
+.mensagem span {
     overflow-wrap: break-word;
     word-break: break-word;
 }
@@ -151,7 +151,7 @@ h1 {
 }
 
 h2 {
-    color: #D1C4E9; /* Roxo claro */
+    color: #C0C0C0; /* Prata */
     font-size: 1.5em;
     margin-bottom: 15px;
     text-align: center;
@@ -221,14 +221,14 @@ h2 {
 }
 
 header {
-    background-color: #191970; /* Azul meia-noite */
+    background-color: #FFD700; /* Dourado */
     padding: 15px 0;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 1001;
 }
 
 nav ul {
@@ -240,7 +240,7 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: #FFD700; /* Dourado */
+    color: #1A1A1A; /* Preto profundo */
     font-weight: 500;
     font-size: 1.2em;
     padding: 12px;
@@ -248,13 +248,13 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #DAA520; /* Dourado escuro */
+    color: #800020; /* Burgundy */
     transform: scale(1.1);
 }
 
 .botao_excluir {
-    background-color: #B22222; /* Vermelho tijolo */
-    color: #E0E0E0; /* Cinza claro */
+    background-color: #800020; /* Burgundy */
+    color: #FFFFFF;
     width: 60px;
     height: 35px;
     border: none;
@@ -264,7 +264,7 @@ nav ul li a:hover {
 
 .botao_excluir:hover {
     transform: scale(1.1);
-    background-color: #8B0000; /* Vermelho escuro */
+    background-color: #50C878; /* Verde esmeralda */
 }
 
 .like,
@@ -272,6 +272,7 @@ nav ul li a:hover {
     width: 35px;
     height: 35px;
     transition: transform 0.2s ease;
+    color: #FFD700;
 }
 
 .like:hover,
