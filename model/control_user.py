@@ -1,4 +1,5 @@
 import datetime
+from flask import session
 from data.conexao import Conexao, ConexaoLocal
 
 class Usuario:
@@ -26,7 +27,7 @@ class Usuario:
 
         cursor = conn.cursor()
 
-        sql = "SELECT COUNT(*) FROM tb_usuarios WHERE login = %s AND senha = %s"
+        sql = "SELECT nome, login, senha FROM tb_usuarios WHERE login = %s AND senha = %s"
 
         valores = (login, password)
 
@@ -37,7 +38,9 @@ class Usuario:
         cursor.close()
         conn.close()
 
-        if resultado[0] > 0:
+        if resultado:
+            session['usuario'] = resultado['login']
+            session['nome_usuario'] = resultado['nome']
             return True
         else:
             return False

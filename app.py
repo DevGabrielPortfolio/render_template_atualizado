@@ -38,11 +38,14 @@ def login():
 
 @app.route('/home')
 def home():
-    curiosidade = rd.choice(listas_configuracao.curiosidades_basquete)
-    cor = rd.choice(listas_configuracao.cores_fundo)
-    imagem = rd.choice(listas_configuracao.lista_imagens)
+    if "usuario" in session:
+        curiosidade = rd.choice(listas_configuracao.curiosidades_basquete)
+        cor = rd.choice(listas_configuracao.cores_fundo)
+        imagem = rd.choice(listas_configuracao.lista_imagens)
 
-    return render_template('home.html', texto_curiosidade=curiosidade, imagem=imagem, cor_fundo=cor)
+        return render_template('home.html', texto_curiosidade=curiosidade, imagem=imagem, cor_fundo=cor)
+    else:
+        return redirect('/')
 
 @app.route('/curiosidades')
 def primeiroweb():
