@@ -17,11 +17,6 @@ body {
     justify-content: space-between;
 }
 
-.deslogar{
-    margin-bottom: -30px;
-    margin-left: 10px;
-}
-
 .deslogar > a{
     color: #fff;
     text-decoration: none;
@@ -29,9 +24,6 @@ body {
 
 .boas-vindas{
     color: #fff;
-    text-align: end;
-    margin-top: -30px;
-    margin-right: 10px;
 }
 
 /* Centralizando o conteúdo */
