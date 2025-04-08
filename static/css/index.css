@@ -1,6 +1,13 @@
+/* Reset básico para garantir consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Gradiente suave */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,49 +17,80 @@ body {
 
 .form-container {
     background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 300px;
+    padding: 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    width: 350px;
+    text-align: center;
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
+}
+
+.form-container:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente quando passa o mouse */
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.3); /* Sombras mais intensas */
 }
 
 h1 {
-    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
 h2 {
-    text-align: center;
-    color: #333;
+    font-size: 1.5em;
+    color: #444;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
 .form {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 label {
+    font-size: 1.1em;
+    color: #555;
     display: block;
-    margin-bottom: 5px;
-    color: #333;
+    margin-bottom: 8px;
+    text-align: left;
+    font-weight: 500;
 }
 
 input {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6); /* Destaque para campos focados */
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #4CAF50;
     color: white;
+    font-size: 1.1em;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
     background-color: #45a049;
+    transform: translateY(-2px); /* Botão sobe um pouco quando passa o mouse */
+}
+
+button:active {
+    background-color: #388e3c;
+    transform: translateY(0); /* Animação para o clique */
 }
