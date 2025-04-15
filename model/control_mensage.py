@@ -10,10 +10,10 @@ class Mensagem:
    
    
         # Criando a conexão com o banco de dados
-        conexao = Conexao.criar_conexao()
+        conn = Conexao.criar_conexao()
 
         # O cursor será responsável por manipular
-        cursor = conexao.cursor()
+        cursor = conn.cursor()
 
         # Criando o sql que será executado
         sql = """INSERT INTO tb_comentarios
@@ -27,19 +27,19 @@ class Mensagem:
         cursor.execute(sql,valores)
     
         # Confirmo a alteração (commit serve para fixar a alteração)
-        conexao.commit()
+        conn.commit()
     
         # Fecho a conexao com o banco
         cursor.close()
-        conexao.close()
+        conn.close()
 
     def recuperar_mensagems():
 
         #Criar conexão 
-        conexao = Conexao.criar_conexao()
+        conn = Conexao.criar_conexao()
 
         # O cursor será responsável por manipular
-        cursor = conexao.cursor(dictionary = True)
+        cursor = conn.cursor(dictionary = True)
 
         # Criando o sql que será executado
         sql = "SELECT cod_comentario, curtidas, nome AS usuario, comentario, data_hora FROM tb_comentarios;"
@@ -51,16 +51,16 @@ class Mensagem:
         resultado = cursor.fetchall()
 
         #Fecho a conexão (como não ouve alteração não preciso do commit)
-        conexao.close()
+        conn.close()
 
         return resultado
     
     def delete_message(id):
         # Criando a conexão com o banco de dados
-        conexao = Conexao.criar_conexao()
+        conn = Conexao.criar_conexao()
 
         # O cursor será responsável por manipular
-        cursor = conexao.cursor()
+        cursor = conn.cursor()
 
         # Criando o sql que será executado
         sql = """DELETE FROM tb_comentarios WHERE cod_comentario = %s;"""
@@ -71,16 +71,16 @@ class Mensagem:
         cursor.execute(sql,valores)
     
         # Confirmo a alteração (commit serve para fixar a alteração)
-        conexao.commit()
+        conn.commit()
     
         # Fecho a conexao com o banco
         cursor.close()
-        conexao.close()
+        conn.close()
     
     def add_like(id):
         # Criando a conexão com o banco de dados
-        conexao = Conexao.criar_conexao()
-        cursor = conexao.cursor()
+        conn = Conexao.criar_conexao()
+        cursor = conn.cursor()
 
         # Criando o SQL que será executado
         sql = """UPDATE tb_comentarios
@@ -91,17 +91,17 @@ class Mensagem:
 
         # Executando o comando SQL
         cursor.execute(sql, valores)
-        conexao.commit()
+        conn.commit()
 
         # Fechando a conexão
         cursor.close()
-        conexao.close()
+        conn.close()
 
 
     def add_dislike(id):
         # Criando a conexão com o banco de dados
-        conexao = Conexao.criar_conexao()
-        cursor = conexao.cursor()
+        conn = Conexao.criar_conexao()
+        cursor = conn.cursor()
 
         # Criando o SQL que será executado
         sql = """UPDATE tb_comentarios
@@ -112,8 +112,32 @@ class Mensagem:
 
         # Executando o comando SQL
         cursor.execute(sql, valores)
-        conexao.commit()
+        conn.commit()
 
         # Fechando a conexão
         cursor.close()
-        conexao.close()
+        conn.close()
+
+
+    def ultimaMensagem(usuario):
+        conn = Conexao.criar_conexao()
+        cursor = conn.cursor()
+
+        sql = """
+            SELECT comentario 
+            FROM tb_comentarios 
+            WHERE nome = %s 
+            ORDER BY cod_comentario DESC 
+            LIMIT 1;
+        """
+        cursor.execute(sql, (usuario,))
+        
+        resultado = cursor.fetchone()
+
+        cursor.close()
+        conn.close()
+
+        if resultado:
+            return resultado[0]
+        else:
+            return "Nenhuma mensagem encontrada"

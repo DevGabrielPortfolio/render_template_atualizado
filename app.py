@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import random as rd
 import os
 from model.control_user import Usuario
@@ -131,6 +131,16 @@ def like_mensagem(codigo):
 def deslike_mensagem(codigo):
     Mensagem.add_dislike(codigo)
     return redirect('/comentarios')
+
+@app.route('/api/get/mensagens')
+def api_get_mensagens():
+    mensagens = Mensagem.recuperar_mensagems()
+    return jsonify(mensagens)
+
+@app.route('/api/get/ultimaMensagem/<usuario>')
+def api_get_ultima_mensagem(usuario):
+    mensagem = Mensagem.ultimaMensagem(usuario)
+    return jsonify(mensagem)
 
 # Executa o app
 if __name__ == '__main__':
