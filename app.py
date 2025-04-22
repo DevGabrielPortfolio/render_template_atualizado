@@ -5,6 +5,7 @@ from model.control_user import Usuario
 from data import listas_configuracao
 from model.control_mensage import Mensagem
 from hashlib import sha256
+import requests
 
 app = Flask(__name__)
 
@@ -137,10 +138,39 @@ def api_get_mensagens():
     mensagens = Mensagem.recuperar_mensagems()
     return jsonify(mensagens)
 
+
+
+ESP32_IP = "10.10.0.2"
+
 @app.route('/api/get/ultimaMensagem/<usuario>')
 def api_get_ultima_mensagem(usuario):
-    mensagem = Mensagem.ultimaMensagem(usuario)
-    return jsonify(mensagem)
+    mensagem = Mensagem.ultimaMensagem(usuario)  # Supondo que isso retorne um dicionário como {"mensagem": "ligado"}
+    texto = mensagem.get('mensagem', '').strip().lower()
+
+    resposta_esp32 = None
+    status = "nenhuma ação realizada"
+
+    if texto == "ligado":
+        try:
+            resposta = requests.get(f"{ESP32_IP}/led/on")
+            status = "LED ligado"
+            resposta_esp32 = resposta.text
+        except requests.exceptions.RequestException as e:
+            status = f"Erro ao ligar LED: {e}"
+
+    elif texto == "desligado":
+        try:
+            resposta = requests.get(f"{ESP32_IP}/led/off")
+            status = "LED desligado"
+            resposta_esp32 = resposta.text
+        except requests.exceptions.RequestException as e:
+            status = f"Erro ao desligar LED: {e}"
+
+    return jsonify({
+        "mensagem": mensagem,
+        "acao_realizada": status,
+        "resposta_esp32": resposta_esp32
+    })
 
 # Executa o app
 if __name__ == '__main__':

@@ -6,8 +6,8 @@ class Conexao:
         # Criando a conexão com o banco de dados local
         # conexao = mysql.connector.connect(host = "localhost",
         #                                 port = 3306,
-        #                                 user = "3ds",
-        #                                 password = "banana",
+        #                                 user = "root",
+        #                                 password = "root",
         #                                 database = "db_feedback")
 
         # Criando a conexão com o banco de dados na nuvem
